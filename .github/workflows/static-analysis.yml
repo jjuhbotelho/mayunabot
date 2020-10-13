@@ -1,0 +1,31 @@
+name: Análise Estática do Código
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Valida composer.json e composer.lock
+        run: composer validate
+
+      - name: Cache composer
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Instala dependências
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: PHP CodeSniffer
+        run: ./vendor/bin/phpcs --standard=PSR12 bot.php
