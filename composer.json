@@ -1,0 +1,13 @@
+{
+    "name": "jjuhbotelho/mayunabot",
+    "type": "project",
+    "description": "Bot da Twitch",
+    "license": "MIT",
+    "require": {
+        "php": "^7.3",
+        "epochblue/philip": "1.0.*"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5"
+    }
+}
