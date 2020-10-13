@@ -70,9 +70,18 @@ $bot->onChannel('/^!so-remove (.*)$/', function ($event) use (&$bot, &$db) {
     }
 });
 
-$bot->onChannel('/^!echo (.*)$/', function ($event) {
-    $matches = $event->getMatches();
-    $event->addResponse(Response::msg($event->getRequest()->getSource(), trim($matches[0])));
+$bot->onChannel('/^.*$/', function ($event) use (&$db) {
+    $request = $event->getRequest();
+    $user = $request->getSendingUser();
+
+    $stmt = $db->prepare('SELECT 1 FROM streamers WHERE username = :username');
+    $stmt->execute([':username' => $user]);
+    if ($stmt->fetch(PDO::FETCH_ASSOC) !== false) {
+        $event->addResponse(Response::msg(
+            $request->getSource(),
+            "!sh-so ${user}",
+        ));
+    }
 });
 
 $bot->run();
