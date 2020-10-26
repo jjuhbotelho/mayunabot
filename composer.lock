@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08c168c251ccbde2e2f8689b6d3c06d6",
+    "content-hash": "a20d17a6db80ed1da7b7d8df67aea648",
     "packages": [
         {
             "name": "epochblue/philip",
-            "version": "v1.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/epochblue/philip.git",
-                "reference": "a509777d189d310832640e3f9a77332c4ed224c0"
+                "url": "https://github.com/eduardoklosowski/philip.git",
+                "reference": "a648e249f03d264066ce6459fa2ac59c8412e515"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/epochblue/philip/zipball/a509777d189d310832640e3f9a77332c4ed224c0",
-                "reference": "a509777d189d310832640e3f9a77332c4ed224c0",
+                "url": "https://api.github.com/repos/eduardoklosowski/philip/zipball/a648e249f03d264066ce6459fa2ac59c8412e515",
+                "reference": "a648e249f03d264066ce6459fa2ac59c8412e515",
                 "shasum": ""
             },
             "require": {
@@ -39,7 +39,6 @@
                     "Philip": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -53,11 +52,14 @@
             "description": "A Slim-inspired IRC bot framework",
             "homepage": "https://github.com/epochblue/philip",
             "keywords": [
-                "DSL",
                 "bot",
+                "dsl",
                 "irc"
             ],
-            "time": "2013-12-27T17:17:13+00:00"
+            "support": {
+                "source": "https://github.com/eduardoklosowski/philip/tree/master"
+            },
+            "time": "2020-10-23T02:48:05+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -278,7 +280,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "epochblue/philip": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

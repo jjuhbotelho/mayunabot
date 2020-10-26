@@ -5,9 +5,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.3",
-        "epochblue/philip": "1.0.*"
+        "epochblue/philip": "dev-master"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/eduardoklosowski/philip"
+        }
+    ]
 }
