@@ -4,18 +4,22 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Philip\Philip;
 use Philip\IRC\Response;
+use Symfony\Component\Dotenv\Dotenv;
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__ . '/.env');
 
 $config = [
     'server' => 'irc.chat.twitch.tv',
     'port' => 6697,
     'ssl' => true,
-    'username' => getenv('USERNAME'),
-    'realname' => getenv('USERNAME'),
-    'nick' => getenv('USERNAME'),
-    'connection_password' => getenv('PASSWORD'),
-    'channels' => explode(',', getenv('CHANNEL')),
+    'username' => $_ENV['USERNAME'],
+    'realname' => $_ENV['USERNAME'],
+    'nick' => $_ENV['USERNAME'],
+    'connection_password' => $_ENV['PASSWORD'],
+    'channels' => explode(',', $_ENV['CHANNEL']),
     'unflood' => 500,
-    'admins' => explode(',', getenv('ADMINS')),
+    'admins' => explode(',', $_ENV['ADMINS']),
     'debug' => true,
     'log' => '/dev/stdout',
 ];
