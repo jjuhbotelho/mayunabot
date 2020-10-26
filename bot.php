@@ -78,13 +78,17 @@ $bot->onChannel('/^.*$/', function ($event) use (&$db) {
     $request = $event->getRequest();
     $user = $request->getSendingUser();
 
-    $stmt = $db->prepare('SELECT 1 FROM streamers WHERE username = :username');
+    $stmt = $db->prepare('INSERT OR IGNORE INTO onchat (date, username) VALUES (date(), :username)');
     $stmt->execute([':username' => $user]);
-    if ($stmt->fetch(PDO::FETCH_ASSOC) !== false) {
-        $event->addResponse(Response::msg(
-            $request->getSource(),
-            "!sh-so ${user}",
-        ));
+    if ($stmt->rowCount() != 0) {
+        $stmt = $db->prepare('SELECT 1 FROM streamers WHERE username = :username');
+        $stmt->execute([':username' => $user]);
+        if ($stmt->fetch(PDO::FETCH_ASSOC) !== false) {
+            $event->addResponse(Response::msg(
+                $request->getSource(),
+                "!sh-so ${user}",
+            ));
+        }
     }
 });
 
