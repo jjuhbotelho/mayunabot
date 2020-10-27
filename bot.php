@@ -21,7 +21,7 @@ $config = [
     'unflood' => 500,
     'admins' => explode(',', $_ENV['ADMINS']),
     'debug' => true,
-    'log' => '/dev/stdout',
+    'log' => 'php://stdout',
 ];
 
 $bot = new Philip($config);
